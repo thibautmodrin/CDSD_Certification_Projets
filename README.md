@@ -1,8 +1,11 @@
-Diplôme d'état - RNCP35288 - Niveau 6 (équivalent BAC+4)
+# RNCP35288 - Niveau 6 : Data Science et Intelligence Artificielle
 
-L’objectif visé de la certification CDSD est de devenir un spécialiste en science des données ayant la capacité d’avoir une vision globale des projets de Science de Données, capable de les concevoir et diriger dans leur ensemble comme d'intervenir à un point précis de ces derniers.
+Bienvenue sur ce dépôt dédié à ma certification RNCP35288 (Niveau 6), spécialisée en **Data Science et Intelligence Artificielle**.  
+Vous y trouverez l’ensemble des projets réalisés dans le cadre de ma formation, couvrant les principales étapes de la gestion de données et du développement de solutions IA.
 
-Elle se compose de six blocs de compétences :
+## 🌟 Organisation du dépôt
+
+Ce dépôt est structuré en 6 blocs, chacun illustrant une compétence clé du parcours :
 
 Bloc 1 - Construction et alimentation d'une infrastructure de gestion de données
 Bloc 2 - Analyse exploratoire, descriptive et inférentielle de données

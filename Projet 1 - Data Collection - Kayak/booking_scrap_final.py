@@ -21,13 +21,14 @@ class BookingSpiderPage(scrapy.Spider):
     def parse(self, response):
         """Parse les informations des hôtels sur la page de recherche."""
         city = response.meta["city"]
-        hotels = response.xpath("//div[@data-testid='property-card']")
+        hotels = response.xpath("//div[@data-testid='property-card']")[:20]  # 👈 ici, on limite à 20
 
         for hotel in hotels:
             hotel_data = self.extract_hotel_info(hotel, response)
+            if not hotel_data["url"]:
+                continue
             full_url = response.urljoin(hotel_data["url"])
 
-            # Requête vers la page de l'hôtel pour extraire la latitude
             yield scrapy.Request(
                 url=full_url,
                 callback=self.parse_hotel,
@@ -36,6 +37,7 @@ class BookingSpiderPage(scrapy.Spider):
                     "city": city,
                 }
             )
+
 
     def extract_hotel_info(self, hotel, response):
         """Extrait les informations de base d'un hôtel."""
@@ -48,11 +50,13 @@ class BookingSpiderPage(scrapy.Spider):
 
     def parse_score(self, hotel):
         """Extrait et convertit le score en float, renvoie None en cas d'erreur."""
-        score = hotel.xpath("div[1]/div[2]/div/div/div[2]/div/div[1]/a/span/div/div[1]/div/text()").get()
-        try:
-            return float(score.split(" ")[-2])
-        except (ValueError, TypeError, IndexError):
-            return None
+        score = hotel.xpath(".//div[@data-testid='review-score']/div[2]/text()").get()
+        if score:
+            try:
+                return float(score.replace(",", ".").strip())
+            except ValueError:
+                return None
+        return None
 
     def parse_hotel(self, response):
         """Parse la page de l'hôtel pour extraire la latitude."""

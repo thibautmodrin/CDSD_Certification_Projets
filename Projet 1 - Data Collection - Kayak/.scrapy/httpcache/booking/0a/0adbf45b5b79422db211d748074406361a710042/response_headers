@@ -1,0 +1,20 @@
+Content-Type: text/html
+Server: envoy
+Date: Mon, 04 Aug 2025 19:48:26 GMT
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding
+Content-Security-Policy: report-uri https://nellie.booking.com/csp-report-uri?type=block; script-src 'self' 'nonce-33jhzRTU4lMmu3AFxoGFSg==' 'report-sample' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic' https: 'sha256-47mKTaMaEn1L3m5DAz9muidMqw636xxw7EFAK/YnPdg=' 'sha256-iry7oJKoKJ+9HSjmU3E1TlRlpSesJWZ1vapuUz2MP38=' 'sha256-2rvfFrggTCtyF5WOiTri1gDS8Boibj4Njn0e+VCBmDI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+Referrer-Policy: no-referrer
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbxvqr48KAWm9rDLJzytlwdqsku31cgYPxxjIwd1uEJdInmmDEKaKOeSQlvDPxpyUHBYOhar227rBVu6BqhIqjkdsPiwUXDySdMy2gYrwBbU%2FI858TrQoJigHgYqOOxZ5AmGjyB4KfitjEWVM093Vi%2Fyr%2FplAw5n4bm3m0WaGnz98n9axS40E1NCa%2BohLZhQlS;Version=1;Domain=booking.com;Path=/;Secure;HttpOnly;Expires=Sun, 04 Aug 2030 19:48:26 GMT;SameSite=None
+Set-Cookie: bkng_sso_auth=CAIQ0+WGHxpmxWuFTD1IauCKXQvS+laWaqxsuhuHxzAc8VtyPE6Rm+vK78nt4XWW1fHYEC9GZ2GCsrizQkBhN3kUjHBg0ifu9+65+5flzkrGHcqod2r2ZVBh3rmnlBJ16NBXaJNHLVUhaHaJq6nR; Domain=.booking.com; Path=/; Expires=Wed, 04 Aug 2027 19:48:26 GMT; HttpOnly; Secure; SameSite=Lax
+Set-Cookie: pcm_consent=analytical%3Dfalse%26countryCode%3DFR%26consentId%3D1b24bafb-81d4-4661-b39d-af61dd3becb7%26consentedAt%3D2025-08-04T19%3A48%3A26.004Z%26expiresAt%3D2026-01-31T19%3A48%3A26.004Z%26implicit%3Dtrue%26marketing%3Dfalse%26regionCode%3DBFC%26regulation%3Dgdpr%26legacyRegulation%3Dgdpr; Domain=.booking.com; Path=/; Expires=Tue, 04 Aug 2026 19:48:26 GMT; HttpOnly; Secure; SameSite=Lax
+Content-Encoding: gzip
+X-Envoy-Upstream-Service-Time: 60
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 c67feb477d254fde2981dc0574086454.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: 8ms3fBpOFV0hCvNYSr3a-6uGMljP6gekKMV1vPJ0RKDAvzhQxzXssA==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=64,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="8ms3fBpOFV0hCvNYSr3a-6uGMljP6gekKMV1vPJ0RKDAvzhQxzXssA==",cdn-downstream-fbl;dur=101

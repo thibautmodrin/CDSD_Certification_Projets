@@ -1,0 +1,14 @@
+Content-Length: 2428
+Content-Type: text/html
+Server: nginx
+Date: Mon, 04 Aug 2025 17:50:24 GMT
+Set-Cookie: _implmdnbl=2__1__0; path=/; expires=Wed, 05-Aug-2020 17:50:24 GMT; HttpOnly
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbof7CEiNviT9N4FAOKvbKr190yL7vfas4ApF7CfweF932v3RgBDRGI6vMpZwGOYU4VxEluvwaXRZTuTdDQ%2F9g8If38KzuJ8N6HWVxItPyGkJX9wBWCtwz217EkJbGJAZ9vPSjA4CuFmGPNqFneen8AazToMTKOVnQfguNPp2lJxw%3D; domain=.booking.com; path=/; expires=Sat, 03-Aug-2030 17:50:24 GMT; Secure; HTTPOnly; SameSite=None
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+Content-Security-Policy-Report-Only: frame-ancestors 'none'; report-uri https://nellie.booking.com/csp-report-uri?type=report&tag=112&pid=cd7f7d703e04039a&e=UmFuZG9tSVYkc2RlIyh9YXZqW3zWGZ0-AzzosVTKJBP0_VTwIeH-rhrvCD2niXr4_hB_cCxGCLs
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 af1ebb4ababebd1a1df1142680fed58a.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: Ib0MgVgj_C-j1-KcqfkCcidnN0K6F35pV0cd10ahvO67SV0OPVieNw==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=1,cdn-upstream-fbl;dur=55,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="Ib0MgVgj_C-j1-KcqfkCcidnN0K6F35pV0cd10ahvO67SV0OPVieNw==",cdn-downstream-fbl;dur=89

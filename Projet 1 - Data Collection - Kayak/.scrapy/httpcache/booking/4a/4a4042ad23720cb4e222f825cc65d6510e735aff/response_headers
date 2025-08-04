@@ -1,0 +1,29 @@
+Content-Type: text/html; charset=UTF-8
+Server: nginx
+Date: Mon, 04 Aug 2025 17:52:02 GMT
+Cache-Control: private
+Vary: User-Agent, Accept-Encoding
+Content-Encoding: br
+Link: <https://cf.bstatic.com/static/css/gprof_icons_cloudfront_sd.iq_ltr/308436ca26aacf6a7553e4c0cf298d0f780727a2.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/hotel_base_cloudfront_sd.iq_ltr/7a3c024e8b410f817fb287f8aaca8102477da2ed.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/hotel_experiments_cloudfront_sd.iq_ltr/312ccb8b2d6625c26c42a44a43f8e25e66e6c603.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/hotel_experiments_rtrw_cloudfront_sd.iq_ltr/de14ff1f714fe0123b06dd1f49088fac1cb77bb9.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/incentives_cloudfront_sd.iq_ltr/f1558a6e9832a4eb8cfe1d3d14db176bd3564335.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/main_cloudfront_sd.iq_ltr/e48efb2b4f6ef935d3e63baace9fd3504e8a56f1.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/main_exps_cloudfront_sd.iq_ltr/b08056dddfe104d80d02a68b00266d52e048dd7b.css>; rel=preload; as=style
+Link: <https://cf.bstatic.com/static/css/mlt_cloudfront_sd.iq_ltr.css>; rel=preload; as=style
+Nel: {"max_age":604800,"report_to":"default","failure_fraction":0.1}
+Report-To: {"endpoints":[{"url":"https://nellie.booking.com/report"}],"group":"default","max_age":604800}
+Set-Cookie: _implmdnbl=2__1__0; path=/; expires=Wed, 05-Aug-2020 17:52:01 GMT; HttpOnly
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbwcLxQQ4VaCrDyg11eIWqJMPnJ%2BLi2gMXfyW%2B%2Be4JNiq7OH2UXLt48%2B%2FFLhH02qqSHiAqPDLS%2F9X91JQ1OWxOI77W5mAK8z5GOssKHs2Q0dO%2Bx3gvVSxS%2FvuexlBKJB9KOfwABVoyvHV5UEMvdr7lZg1A%2F%2FgImzo5DyBu%2B2xyd4s%3D; domain=.booking.com; path=/; expires=Sat, 03-Aug-2030 17:52:02 GMT; Secure; HTTPOnly; SameSite=None
+Set-Cookie: pcm_personalization_disabled=0; domain=booking.com; path=/; expires=Sat, 31-Jan-2026 17:52:02 GMT; Secure; HTTPOnly
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Recruiting: Like HTTP headers? Come write ours: https://careers.booking.com
+Content-Security-Policy-Report-Only: object-src 'none'; report-uri https://nellie.booking.com/csp-report-uri?type=report&tag=160&pid=52a97da091dc0053&e=UmFuZG9tSVYkc2RlIyh9YYC7odtetdfIEk2obGAga9TiR2-0dF0-8Gu2trP6TlkI
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 0ea0aa067bccec2bca8820a976e6164a.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: 6uDO1KQUB8PwhWe0PkqInyMirDTPFrnVET8OnFT3DObHvob7o_mA8g==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=442,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="6uDO1KQUB8PwhWe0PkqInyMirDTPFrnVET8OnFT3DObHvob7o_mA8g==",cdn-downstream-fbl;dur=475

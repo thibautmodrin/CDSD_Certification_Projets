@@ -1,0 +1,18 @@
+Content-Type: text/html
+Server: envoy
+Date: Mon, 04 Aug 2025 17:33:46 GMT
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding
+Content-Security-Policy: report-uri https://nellie.booking.com/csp-report-uri?type=block; script-src 'self' 'nonce-8jbp70NyBoruA9zCNhgzYA==' 'report-sample' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic' https: 'sha256-47mKTaMaEn1L3m5DAz9muidMqw636xxw7EFAK/YnPdg=' 'sha256-iry7oJKoKJ+9HSjmU3E1TlRlpSesJWZ1vapuUz2MP38=' 'sha256-2rvfFrggTCtyF5WOiTri1gDS8Boibj4Njn0e+VCBmDI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+Referrer-Policy: no-referrer
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbvQioTCPq7cGLWwkY3MhO%2FDs155SaekxMn8ts%2BVb3Pdps48HBLsjuiF9pGVauy9WgWone6N422W2p7sM5qlpuwUVCiZLXR2J4oHNV%2BH36t26jebmfchUbh9fdKLHUF0%2BXZRJmDRVtsTh3hqoF0jw0brmd%2BJxEGNbZqJdVeG97ZUBJtTB7cpZkDFQ0Rz5IZMR5D%2Bdtqdjkfj7hR%2BQK0XyezQ6yQZbwfpq6;Version=1;Domain=booking.com;Path=/;Secure;HttpOnly;Expires=Sun, 04 Aug 2030 17:33:46 GMT;SameSite=None
+Content-Encoding: gzip
+X-Envoy-Upstream-Service-Time: 58
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 7fd2e53766edf2c95772fedd22bce34e.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: wuRGqr33Gj4lXGYRXUfLqWUi1DIzbL-bALWbhfVRjh2FnMAGqt9B0A==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=269,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="wuRGqr33Gj4lXGYRXUfLqWUi1DIzbL-bALWbhfVRjh2FnMAGqt9B0A==",cdn-downstream-fbl;dur=307

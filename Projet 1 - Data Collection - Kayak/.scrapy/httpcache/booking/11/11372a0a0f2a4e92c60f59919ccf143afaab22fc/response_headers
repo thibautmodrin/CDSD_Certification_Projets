@@ -1,0 +1,16 @@
+Content-Length: 2428
+Content-Type: text/html
+Server: nginx
+Date: Mon, 04 Aug 2025 17:33:38 GMT
+Set-Cookie: _implmdnbl=2__1__0; path=/; expires=Wed, 05-Aug-2020 17:33:38 GMT; HttpOnly
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbca8KLfxLPedYYcoRHeS6hPW6%2BnA1%2Bah4ZX8pKAR6qZuD6YIxhEIVoXW%2Bs%2Fv0P%2BBq7pY3AFn6afh96mDa%2BUngvSnHsssJa9EQ15CGSeK1yJi6MPfKjvCv8wRbUyBsrMAgmb9Q3S%2FhTR3W%2Bl24GJU4DR3GQ2zubavA; domain=.booking.com; path=/; expires=Sat, 03-Aug-2030 17:33:38 GMT; Secure; HTTPOnly; SameSite=None
+Set-Cookie: bkng_sso_auth=CAIQ0+WGHxpmEKNLpoaWneIhDVw9Ycg8uC7Sa7hPu5Z4jgKMMxLwkfi+Sb9yJPdTJyTmcchtzHRDnXbQeZubAiA4cXTpIrkffa9lCRRFVG3LdEgpva2acUXCWoP+whZKkeZWFxQmqrxxEj+3/oEl; Domain=.booking.com; Path=/; Expires=Wed, 04 Aug 2027 17:33:38 GMT; HttpOnly; Secure; SameSite=Lax
+Set-Cookie: pcm_consent=analytical%3Dfalse%26countryCode%3DFR%26consentId%3Dcc9f8af1-27e9-4cc1-9982-9f7803a0d5a0%26consentedAt%3D2025-08-04T17%3A33%3A38.728Z%26expiresAt%3D2026-01-31T17%3A33%3A38.728Z%26implicit%3Dtrue%26marketing%3Dfalse%26regionCode%3DBFC%26regulation%3Dgdpr%26legacyRegulation%3Dgdpr; Domain=.booking.com; Path=/; Expires=Tue, 04 Aug 2026 17:33:38 GMT; HttpOnly; Secure; SameSite=Lax
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+Content-Security-Policy-Report-Only: frame-ancestors 'none'; report-uri https://nellie.booking.com/csp-report-uri?type=report&tag=112&pid=8d117b79584102ab&e=UmFuZG9tSVYkc2RlIyh9YXZqW3zWGZ0-0WRWNuR2jaaAL-ohLQJ09BIZW0mIXsxugSyC32yDwhPXDEq-I-5qd2IyNctlvR4m
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 0b2f0b4cff86a910cb2f7990385ac516.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: oOyfuoZVWmFDLhOg3SGM16lmi0GtM88vU2tYMa36g_k9KIrzCyzAbA==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=49,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="oOyfuoZVWmFDLhOg3SGM16lmi0GtM88vU2tYMa36g_k9KIrzCyzAbA==",cdn-downstream-fbl;dur=88

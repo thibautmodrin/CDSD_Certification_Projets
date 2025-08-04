@@ -1,4 +1,5 @@
 # Fichiers sensibles
 *.env
-*.json
-*.csv
+./*.csv
+./*.json
+

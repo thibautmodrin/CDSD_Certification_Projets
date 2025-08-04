@@ -1,0 +1,14 @@
+Content-Length: 2428
+Content-Type: text/html
+Server: nginx
+Date: Mon, 04 Aug 2025 17:50:40 GMT
+Set-Cookie: _implmdnbl=2__1__0; path=/; expires=Wed, 05-Aug-2020 17:50:40 GMT; HttpOnly
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbnmKTRaewPBs0yqoTKxdg0JKdSkD56Of%2FsRpj%2F6sGq7lSEQn%2B1xPJLQyC%2BS34I0vZzqOq%2FYHzsZ7jJohnamzj5d%2FeuEl3o%2BFBw5jq5k%2FtlHGmNSM8XCtLa0c8lyDt1H%2B4mg8vEpz4Vb7dRzVKXIm%2BDcAcgRMXgQoT1lhSW8nKtVg%3D; domain=.booking.com; path=/; expires=Sat, 03-Aug-2030 17:50:40 GMT; Secure; HTTPOnly; SameSite=None
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+Content-Security-Policy-Report-Only: frame-ancestors 'none'; report-uri https://nellie.booking.com/csp-report-uri?type=report&tag=112&pid=26dd7d782553045d&e=UmFuZG9tSVYkc2RlIyh9YXZqW3zWGZ0-AzzosVTKJBPSSBPptQT3WMi4zJjhQi2CC-Tzrm-mZYY
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 af1ebb4ababebd1a1df1142680fed58a.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: -T0SbzgzGqyfdPlHjyu3unpru5tz0umdWhHBSwSKfN21k2XSD57kJA==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=0,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=49,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="-T0SbzgzGqyfdPlHjyu3unpru5tz0umdWhHBSwSKfN21k2XSD57kJA==",cdn-downstream-fbl;dur=85

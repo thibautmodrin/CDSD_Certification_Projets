@@ -1,0 +1,20 @@
+Content-Type: text/html
+Server: envoy
+Date: Mon, 04 Aug 2025 17:33:29 GMT
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Vary: Accept-Encoding
+Content-Security-Policy: report-uri https://nellie.booking.com/csp-report-uri?type=block; script-src 'self' 'nonce-cuMRcFunKuIxxNrepPpihw==' 'report-sample' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic' https: 'sha256-47mKTaMaEn1L3m5DAz9muidMqw636xxw7EFAK/YnPdg=' 'sha256-iry7oJKoKJ+9HSjmU3E1TlRlpSesJWZ1vapuUz2MP38=' 'sha256-2rvfFrggTCtyF5WOiTri1gDS8Boibj4Njn0e+VCBmDI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+Referrer-Policy: no-referrer
+Set-Cookie: bkng=11UmFuZG9tSVYkc2RlIyh9Yaa29%2F3xUOLbxvqr48KAWm9rDLJzytlwdkhhoJOh98AfFRviuhxYdSIJyWQvM4Fm%2BUfeC9deWkSck30aHlvN1%2BzQx4fom5MPHfm0pEPenbEQ9lJS97ilyhmnIRO51epL7rc0zfZeAdEEpAmu%2BkLbmX%2B74EU6GMeuZgIhIp0ePR6wSfGSK%2BgmDdz%2F%2BD5Qt5MAlr5FZX%2B2Vn2U;Version=1;Domain=booking.com;Path=/;Secure;HttpOnly;Expires=Sun, 04 Aug 2030 17:33:29 GMT;SameSite=None
+Set-Cookie: bkng_sso_auth=CAIQ0+WGHxpmudEUzWSZqJ4JAlHuinjgL72KLciDlUvYRxVnka1YuSvuxr/2VN6y+q1fB8EQI2wz25GNSoyzjb2JzX3vMpujZNwyRVxy0i/d1MbS62//PD9M0jEwV0SDzoy3chDPnGwBQA0NCZjJ; Domain=.booking.com; Path=/; Expires=Wed, 04 Aug 2027 17:33:29 GMT; HttpOnly; Secure; SameSite=Lax
+Set-Cookie: pcm_consent=analytical%3Dfalse%26countryCode%3DFR%26consentId%3D8f0c62a4-de60-4f00-a955-d5fb0102f2d6%26consentedAt%3D2025-08-04T17%3A33%3A29.376Z%26expiresAt%3D2026-01-31T17%3A33%3A29.376Z%26implicit%3Dtrue%26marketing%3Dfalse%26regionCode%3DBFC%26regulation%3Dgdpr%26legacyRegulation%3Dgdpr; Domain=.booking.com; Path=/; Expires=Tue, 04 Aug 2026 17:33:29 GMT; HttpOnly; Secure; SameSite=Lax
+Content-Encoding: gzip
+X-Envoy-Upstream-Service-Time: 53
+X-Xss-Protection: 1; mode=block
+X-Cache: Miss from cloudfront
+Via: 1.1 7fd2e53766edf2c95772fedd22bce34e.cloudfront.net (CloudFront)
+X-Amz-Cf-Pop: MRS52-P1
+X-Amz-Cf-Id: 0vmVzLT96TnH-caJXyLr5J9jArYaTgHA0EF8J5aMITkynAVY1hvLyA==
+Server-Timing: cdn-upstream-layer;desc="REC",cdn-upstream-dns;dur=1,cdn-upstream-connect;dur=0,cdn-upstream-fbl;dur=58,cdn-cache-miss,cdn-pop;desc="MRS52-P1",cdn-rid;desc="0vmVzLT96TnH-caJXyLr5J9jArYaTgHA0EF8J5aMITkynAVY1hvLyA==",cdn-downstream-fbl;dur=102

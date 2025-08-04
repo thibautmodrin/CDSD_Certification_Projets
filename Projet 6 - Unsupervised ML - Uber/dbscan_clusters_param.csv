@@ -1,0 +1,7 @@
+,index,eps,min_samples
+dbscan_cluster_4,181,0.3,21
+dbscan_cluster_7,110,0.215,5
+dbscan_cluster_5,204,0.29000000000000004,8
+dbscan_cluster_6,176,0.28,10
+dbscan_cluster_8,40,0.22,5
+dbscan_cluster_9,37,0.195,5

@@ -208,5 +208,5 @@ __marimo__/
 
 # Fichiers sensibles
 *.env
-/Projet 1 - Data Collection - Kayak/*.csv
-/Projet 1 - Data Collection - Kayak/*.json
+./Projet 1 - Data Collection - Kayak/*.csv
+./Projet 1 - Data Collection - Kayak/*.json

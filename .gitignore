@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-Projet 8 - Deployment - Getaround/
+Projet 8 - Deployment - Getaround/app.py
 # Distribution / packaging
 .Python
 build/

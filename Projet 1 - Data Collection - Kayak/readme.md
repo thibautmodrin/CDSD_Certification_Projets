@@ -1,28 +1,163 @@
-# 🌍 Plan Your Trip with Kayak – Data Pipeline & Visualization
+# Plan Your Trip with Kayak — Data Collection & Visualization
 
-## 📌 Contexte et Objectif
-
-Ce projet a été réalisé dans le cadre du notebook **0\_Plan\_your\_trip\_with\_Kayak.ipynb**, dont l’objectif est de construire un pipeline complet permettant de :
-
-1. **Collecter des données** depuis différentes sources (API GPS, API météo, scraping Booking)
-2. **Nettoyer et stocker** ces données (S3, RDS)
-3. **Analyser et visualiser** les informations sur une carte interactive
-4. **Proposer un outil d’aide à la planification de voyages** avec intégration météo et hébergements
+**Certification Jedha — RNCP35288 (Data Science & IA)**  
+**Bloc 1** — Construction et alimentation d'une infrastructure de gestion de données
 
 ---
 
-## 📂 Structure du projet
+## Contexte business
 
-| Notebook                                   | Description                                                                                                          |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| **0\_Plan\_your\_trip\_with\_Kayak.ipynb** | Cahier de planification du projet : définition des objectifs, des sources de données et de l’architecture globale.   |
-| **1\_Api\_GPS.ipynb**                      | Récupération de coordonnées GPS via API à partir de noms de villes / lieux.                                          |
-| **2\_Api\_meteo.ipynb**                    | Connexion à une API météo (OpenWeather ou autre) pour récupérer les prévisions associées aux coordonnées GPS.        |
-| **3\_S3\_data\_clean\_stock.ipynb**        | Nettoyage des données brutes et stockage sur AWS S3 (fichiers CSV/Parquet).                                          |
-| **4\_Map.ipynb**                           | Création d’une carte de base avec Plotly ou Folium, affichant les points GPS récupérés.                              |
-| **5\_Booking\_Scrap.ipynb**                | Scraping d’annonces d’hôtels sur Booking (prix, notes, URL, coordonnées).                                            |
-| **6\_S3\_DB\_RDS.ipynb**                   | Insertion des données nettoyées dans une base AWS RDS (PostgreSQL/MySQL).                                            |
-| **7\_Viz\_Map.ipynb**                      | Visualisation interactive finale : carte des destinations avec météo et hébergements, intégration des liens Booking. |
+Kayak est un moteur de recherche de voyages. D’après une étude interne fictive :
+
+- **70 %** des utilisateurs veulent plus d’informations sur leur destination avant de réserver
+- **~32 %** des utilisateurs abandonnent s’ils ne trouvent pas assez d’infos météo / hébergement
+
+**Objectif** : construire un pipeline de données bout-en-bout pour recommander les **meilleures destinations** (météo + hôtels) et les visualiser sur une carte interactive.
 
 ---
 
+## Pipeline (architecture)
+
+```
+Villes FR (35)
+    │
+    ▼
+[1] Nominatim API  ──► GPS (lat, lon)
+    │
+    ▼
+[2] OpenWeather API ──► prévisions 7 j ──► score météo (CCM)
+    │
+    ▼
+[3] AWS S3  ──► stockage CSV nettoyé
+    │
+    ▼
+[5] Scrapy (Booking.com) ──► top hôtels / ville (note, URL, GPS)
+    │
+    ▼
+[6] AWS RDS (MySQL) ──► table relationnelle
+    │
+    ▼
+[7] Plotly / Dash ──► carte interactive (météo + hôtels)
+```
+
+---
+
+## Structure des notebooks
+
+| Fichier | Rôle |
+|---------|------|
+| `0_Plan_your_trip_with_Kayak.ipynb` | Brief projet & objectifs |
+| `1_Api_GPS.ipynb` | Géocodage Nominatim (35 villes) |
+| `2_Api_meteo.ipynb` | Prévisions OpenWeather + score CCM |
+| `3_S3_data_clean_stock.ipynb` | Upload S3 (`boto3`) |
+| `4_Map.ipynb` | Carte météo Plotly |
+| `5_Booking_Scrap.ipynb` | Orchestration scraping |
+| `booking_scrap_final.py` | Spider Scrapy Booking.com |
+| `6_S3_DB_RDS.ipynb` | Instance RDS MySQL + `to_sql` |
+| `7_Viz_Map.ipynb` | Carte finale météo + hôtels |
+
+---
+
+## Stack technique
+
+| Domaine | Outils |
+|---------|--------|
+| Langage | Python 3 |
+| Collecte API | `requests`, Nominatim, OpenWeather |
+| Scraping | Scrapy (autothrottle, cache HTTP) |
+| Data | pandas, numpy |
+| Cloud | AWS S3, AWS RDS (MySQL), `boto3`, SQLAlchemy |
+| Secrets | `python-dotenv` (`.env` non versionné) |
+| Viz | Plotly Express, Dash |
+
+---
+
+## Résultats clés
+
+| Indicateur | Valeur |
+|------------|--------|
+| Villes géocodées | 34–35 |
+| Destinations scorées (CCM) | 34 |
+| Hôtels scrapés (échantillon) | ~300–800 selon run |
+| Top destination (CCM) | Le Havre (~0.93) |
+| Note hôtels moyenne | ~8.7 / 10 |
+| Stockage | S3 (CSV) + RDS MySQL |
+| Livrable final | Carte interactive (screenshot `screenshot_maps.png`) |
+
+**Score météo (CCM)** : agrège les prévisions (température, couverture nuageuse, précipitations, etc.) pour classer les villes sur ~7 jours.
+
+---
+
+## Démarrage rapide
+
+### 1. Environnement
+
+```bash
+cd "Projet 1 - Data Collection - Kayak"
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 2. Secrets (ne jamais committer)
+
+```bash
+cp .env.example .env
+# renseigner OpenWeather + AWS + RDS
+```
+
+### 3. Enchaînement recommandé
+
+1. `1_Api_GPS.ipynb` → `cities_lat_long.csv`
+2. `2_Api_meteo.ipynb` → score CCM + ranking
+3. `3_S3_data_clean_stock.ipynb` → upload S3
+4. Scraping Booking :
+
+```bash
+python booking_scrap_final.py --cities "Paris" "Marseille" "Lyon"
+# ou via 5_Booking_Scrap.ipynb
+```
+
+5. `6_S3_DB_RDS.ipynb` → RDS + insertion
+6. `7_Viz_Map.ipynb` → visualisation
+
+---
+
+## Données produites
+
+| Fichier | Description |
+|---------|-------------|
+| `cities_lat_long.csv` | Villes + GPS |
+| `cities_lat_long_ccm.csv` | + score météo CCM |
+| `hotels.json` / `hotels.csv` | Hôtels scrapés |
+| `City_Meteo_Rank_Booking.csv` | Jointure météo + hôtels |
+| `screenshot_maps.png` | Aperçu de la carte finale |
+
+---
+
+## Compétences démontrées (oral)
+
+- Collecte multi-sources (API REST + scraping)
+- Nettoyage / jointure de datasets hétérogènes
+- Architecture cloud data (S3 lac de fichiers + RDS relationnel)
+- Sécurisation des credentials (`.env`)
+- Visualisation décisionnelle (ranking destinations + hôtels)
+
+---
+
+## Limites & pistes d’amélioration
+
+| Limite | Amélioration possible |
+|--------|------------------------|
+| Scraping fragile (DOM Booking change) | Sélecteurs plus robustes / API officielle si dispo |
+| Score CCM simplifié | Pondération métier + validation |
+| Run notebooks manuels | Orchestration (Airflow / cron) |
+| ACL S3 `public-read` | Accès privé + signed URLs |
+| Pas de tests automatisés | Tests unitaires spider + schéma données |
+
+---
+
+## Auteur
+
+**Thibaut Modrin** — Certification Data Scientist Jedha (RNCP35288)  
+Repo : [CDSD_Certification_Projets](https://github.com/thibautmodrin/CDSD_Certification_Projets)

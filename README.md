@@ -23,20 +23,20 @@ Portfolio de projets de certification **RNCP niveau 6** — parcours Data Scienc
 
 Repo source du projet final : [Jedha_Full_Stack_HPP_Prediction](https://github.com/thibautmodrin/Jedha_Full_Stack_HPP_Prediction)
 
-### Démo HPP (Bloc 6) — local & Hugging Face
+### Démo HPP (Bloc 6) — Hugging Face & Docker
 
 | Mode | Comment faire |
 |------|----------------|
 | **En ligne** | https://thibautmodrin-hpp-prediction.hf.space → importer `test_dataset_predictor.csv` → **Prédire** |
-| **Local** | Voir [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
-| **Dossier app** | `Projet 9/.../03_Streamlit/hpp_prediction_local/` |
+| **Local (Docker)** | Prérequis : [Docker](https://docs.docker.com/get-docker/). Détails : [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
 
 ```bash
 cd "Projet 9 - Final Project - HPP Prediction/03_Streamlit/hpp_prediction_local"
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
+docker build -t hpp-prediction .
+docker run --rm -p 8501:80 hpp-prediction
 ```
+
+→ http://localhost:8501
 
 ---
 

@@ -1,6 +1,10 @@
-import streamlit as st
-import pandas as pd
+from pathlib import Path
+
 import joblib
+import pandas as pd
+import streamlit as st
+
+DEMO_CSV = Path(__file__).resolve().parent / "test_dataset_predictor.csv"
 
 
 @st.cache_resource
@@ -31,23 +35,56 @@ if expected:
     with st.expander("Colonnes attendues par le modèle"):
         st.code(", ".join(expected))
 
-st.caption("Fichier d'exemple fourni : `test_dataset_predictor.csv`")
-
-uploaded_file = st.file_uploader(
-    "Importer votre fichier CSV avec les variables nécessaires", type="csv"
+st.write("### Données d'entrée")
+st.caption(
+    "Chargez le jeu de démo fourni, ou importez votre propre CSV "
+    "(même colonnes que `test_dataset_predictor.csv`)."
 )
 
-if uploaded_file is not None:
-    st.write(f"Fichier uploadé : **{uploaded_file.name}** ({uploaded_file.size} octets)")
-    try:
-        data = pd.read_csv(uploaded_file)
-        st.success(f"CSV lu avec succès — {data.shape[0]} lignes × {data.shape[1]} colonnes")
-        st.write("### Aperçu des données")
-        # Évite st.dataframe / st.table (freeze fréquent sur Spaces)
-        st.code(data.head(10).to_string(index=False))
-    except Exception as e:
-        st.error(f"Erreur lors de la lecture du CSV : {e}")
+col_demo, col_upload = st.columns([1, 2])
+with col_demo:
+    load_demo = st.button("Charger le dataset de démo", use_container_width=True)
+with col_upload:
+    uploaded_file = st.file_uploader(
+        "Importer votre fichier CSV avec les variables nécessaires", type="csv"
+    )
+
+if "data" not in st.session_state:
+    st.session_state.data = None
+    st.session_state.data_label = None
+    st.session_state.upload_key = None
+
+if load_demo:
+    if not DEMO_CSV.exists():
+        st.error(f"Fichier de démo introuvable : `{DEMO_CSV.name}`")
         st.stop()
+    try:
+        st.session_state.data = pd.read_csv(DEMO_CSV)
+        st.session_state.data_label = f"{DEMO_CSV.name} (démo)"
+        st.session_state.upload_key = None
+    except Exception as e:
+        st.error(f"Erreur lors du chargement du dataset de démo : {e}")
+        st.stop()
+
+if uploaded_file is not None:
+    upload_key = (uploaded_file.name, uploaded_file.size)
+    if st.session_state.upload_key != upload_key:
+        try:
+            st.session_state.data = pd.read_csv(uploaded_file)
+            st.session_state.data_label = uploaded_file.name
+            st.session_state.upload_key = upload_key
+        except Exception as e:
+            st.error(f"Erreur lors de la lecture du CSV : {e}")
+            st.stop()
+
+data = st.session_state.data
+
+if data is not None:
+    st.write(f"Jeu chargé : **{st.session_state.data_label}**")
+    st.success(f"CSV lu avec succès — {data.shape[0]} lignes × {data.shape[1]} colonnes")
+    st.write("### Aperçu des données")
+    # Évite st.dataframe / st.table (freeze fréquent sur Spaces)
+    st.code(data.head(10).to_string(index=False))
 
     if expected:
         missing = [c for c in expected if c not in data.columns]
@@ -90,3 +127,5 @@ if uploaded_file is not None:
                 )
             except Exception as e:
                 st.error(f"Erreur lors de la prédiction : {e}")
+else:
+    st.info("Chargez le dataset de démo ou importez un CSV pour lancer une prédiction.")

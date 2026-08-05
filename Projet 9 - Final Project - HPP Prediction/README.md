@@ -51,7 +51,7 @@ Fichiers utiles : `app.py`, `best_model_logreg_f1_Sans_resampling.joblib`, `test
 ### En ligne (Hugging Face)
 
 1. Ouvrir https://thibautmodrin-hpp-prediction.hf.space  
-2. Importer `test_dataset_predictor.csv`  
+2. Cliquer **Charger le dataset de démo** (ou importer votre CSV)  
 3. Cliquer **Prédire**
 
 ### En local (Docker Compose uniquement)

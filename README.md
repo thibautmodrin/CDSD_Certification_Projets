@@ -27,7 +27,7 @@ Repo source du projet final : [Jedha_Full_Stack_HPP_Prediction](https://github.c
 
 | Mode | Comment faire |
 |------|----------------|
-| **En ligne** | https://thibautmodrin-hpp-prediction.hf.space → importer `test_dataset_predictor.csv` → **Prédire** |
+| **En ligne** | https://thibautmodrin-hpp-prediction.hf.space → **Charger le dataset de démo** → **Prédire** |
 | **Local (Compose)** | Prérequis : [Docker](https://docs.docker.com/get-docker/). Détails : [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
 
 ```bash

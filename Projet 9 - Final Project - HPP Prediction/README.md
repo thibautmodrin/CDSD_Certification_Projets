@@ -8,6 +8,24 @@ Repo source : [Jedha_Full_Stack_HPP_Prediction](https://github.com/thibautmodrin
 Prédire le risque d’**hémorragie du post-partum sévère** (~2 % des cas) dès l’admission, avant l’accouchement, pour anticiper les soins.  
 Priorité métier : un bon **rappel (recall)** plutôt qu’une précision parfaite (coût d’un faux négatif élevé).
 
+## Résultats principaux
+
+Plusieurs modèles ont été testés face à un fort déséquilibre de classes (HPP sévère ≈ 2 %).
+
+| Modèle | Rappel (Recall) | Précision (Precision) | Points forts | Limites |
+|--------|-----------------|------------------------|--------------|---------|
+| Régression logistique + SMOTE | 69 % | ~8 % | Simple & interprétable | Très faible précision |
+| Random Forest | 65 % | ~9 % | Non-linéaire & robuste | Compromis rappel ↔ précision difficile |
+| XGBoost | 66 % | ~9 % | Optimisation avancée | Résultats similaires |
+
+Techniques de rééquilibrage testées : SMOTE, SMOTEENN, RandomUnderSampler, surpondération.
+
+### Interprétation métier
+
+- Un bon **recall** est prioritaire pour ne pas rater une patiente à risque, quitte à déclencher des fausses alertes.
+- Une faible **precision** reste acceptable tant qu’elle ne surcharge pas les ressources cliniques.
+- Logique de triage médical assisté par IA : le coût d’un faux négatif est bien plus élevé que celui d’un faux positif.
+
 ## Stack
 
 | Domaine | Outils |

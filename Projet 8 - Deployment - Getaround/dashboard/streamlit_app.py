@@ -8,92 +8,140 @@ st.set_page_config(page_title="Getaround — Delay impact", layout="wide")
 
 DATA_XLSX = Path(__file__).resolve().parent / "data" / "get_around_delay_analysis.xlsx"
 
-st.title("Getaround — Analyse de l'impact d'un threshold sur les retards")
+st.title("Getaround — Impact d'un threshold entre deux locations")
 
-# Chargement données
 if not DATA_XLSX.exists():
     st.error("Fichier manquant: get_around_delay_analysis.xlsx (place-le dans dashboard/data/)")
     st.stop()
 
 df = pd.read_excel(DATA_XLSX)
 
-# Normalisation colonnes clés avec fallback
-def col_exists(name): return name in df.columns
 
-# Retard au checkout
+def col_exists(name: str) -> bool:
+    return name in df.columns
+
+
+# --- Colonnes clés (avec fallback) ---
 if col_exists("delay_at_checkout_in_minutes"):
     delay_col = "delay_at_checkout_in_minutes"
 elif col_exists("delay_checkout"):
     delay_col = "delay_checkout"
 else:
-    # essaie de détecter une colonne similaire
-    candidates = [c for c in df.columns if "delay" in c and "checkout" in c]
+    candidates = [c for c in df.columns if "delay" in c.lower() and "checkout" in c.lower()]
     delay_col = candidates[0] if candidates else df.columns[0]
 
-# Delta avec la loc précédente
 if col_exists("time_delta_with_previous_rental_in_minutes"):
     gap_col = "time_delta_with_previous_rental_in_minutes"
 else:
-    gaps = [c for c in df.columns if "time" in c and ("delta" in c or "gap" in c)]
+    gaps = [c for c in df.columns if "time" in c.lower() and ("delta" in c.lower() or "gap" in c.lower())]
     gap_col = gaps[0] if gaps else df.columns[0]
 
-# Scope "Connect"
+df["_delay"] = pd.to_numeric(df[delay_col], errors="coerce")
+df["_gap"] = pd.to_numeric(df[gap_col], errors="coerce")
+
+# Scope Connect / All
 if col_exists("checkin_type"):
-    is_connect = (df["checkin_type"].astype(str).str.lower() == "connect").astype(int)
+    df["_is_connect"] = df["checkin_type"].astype(str).str.lower().eq("connect")
 elif col_exists("is_connect"):
-    is_connect = df["is_connect"].astype(int)
+    df["_is_connect"] = df["is_connect"].astype(int).eq(1)
 else:
-    is_connect = pd.Series(np.zeros(len(df), dtype=int), index=df.index)
+    df["_is_connect"] = False
 
-df["_delay"] = pd.to_numeric(df[delay_col], errors="coerce").fillna(0)
-df["_gap_prev"] = pd.to_numeric(df[gap_col], errors="coerce").fillna(0)
-df["_is_connect"] = is_connect
+# Aligné sur l'analyse Jedha : locations terminées si la colonne existe
+if col_exists("state"):
+    base = df[df["state"].astype(str).str.lower().eq("ended")].copy()
+else:
+    base = df.copy()
 
-# Conflit si gap < 0 (chevauchement). Résolu si gap + threshold >= 0
-threshold = st.sidebar.slider("Threshold (minutes)", min_value=0, max_value=120, value=30, step=5)
+threshold = st.sidebar.slider("Threshold (minutes)", min_value=0, max_value=120, value=60, step=5)
 scope = st.sidebar.selectbox("Scope", ["All cars", "Connect only"])
 
-scope_mask = df["_is_connect"].eq(1) if scope == "Connect only" else pd.Series(True, index=df.index)
+scoped = base[base["_is_connect"]] if scope == "Connect only" else base
+n = len(scoped)
 
-total = scope_mask.sum()
-conflicts = (df["_gap_prev"] < 0) & scope_mask
-resolved = ((df["_gap_prev"] + threshold) >= 0) & conflicts
+# 1) Locations touchées par le threshold (= gap connu < seuil)
+#    → ces enchaînements ne seraient plus autorisés
+affected = scoped["_gap"].lt(threshold).fillna(False)
+n_affected = int(affected.sum())
+share_affected = n_affected / n if n else 0.0
 
-share_conflicts = conflicts.sum() / total if total else 0.0
-share_resolved = resolved.sum() / conflicts.sum() if conflicts.sum() else 0.0
+# 2) Cas problématiques : retard checkout > gap planifié
+#    (le conducteur suivant attend) — même définition que le notebook d'analyse
+late_impact = (scoped["_delay"] > scoped["_gap"]).fillna(False)
+n_late = int(late_impact.sum())
+share_late = n_late / n if n else 0.0
 
-# KPIs
-col1, col2, col3 = st.columns(3)
-col1.metric("Locations dans le scope", f"{total}")
-col2.metric("% locations en conflit", f"{share_conflicts*100:.1f}%")
-col3.metric("% conflits résolus (avec threshold)", f"{share_resolved*100:.1f}%")
+# 3) Problèmes évités grâce au threshold :
+#    parmi les late_impact, ceux dont le gap < threshold n'auraient pas eu lieu
+avoided_mask = late_impact & scoped["_gap"].lt(threshold).fillna(False)
+n_avoided = int(avoided_mask.sum())
+share_avoided = n_avoided / n_late if n_late else 0.0
 
-# Histogramme des retards
-fig1 = px.histogram(df[scope_mask], x="_delay", nbins=40, title="Distribution des retards au checkout (min)")
-st.plotly_chart(fig1, use_container_width=True)
+# Attente moyenne quand il y a impact
+wait = (scoped.loc[late_impact, "_delay"] - scoped.loc[late_impact, "_gap"]).mean()
 
-# Courbe threshold vs % conflits résolus
-grid = np.arange(0, 121, 5)
-resolved_curve = [(((df["_gap_prev"] + t) >= 0) & conflicts).sum() / conflicts.sum() if conflicts.sum() else 0.0 for t in grid]
-fig2 = px.line(x=grid, y=resolved_curve, labels={"x":"threshold (min)", "y":"% conflits résolus"},
-               title="Efficacité du threshold")
-st.plotly_chart(fig2, use_container_width=True)
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("Locations (scope)", f"{n:,}")
+col2.metric("% touchées par threshold", f"{share_affected * 100:.1f}%", f"{n_affected:,} locs")
+col3.metric("% impacts retard → suivant", f"{share_late * 100:.1f}%", f"{n_late:,} cas")
+col4.metric("% problèmes évités", f"{share_avoided * 100:.1f}%", f"{n_avoided:,} / {n_late:,}")
 
-# Tableau d'exemple
-st.subheader("Aperçu des cas en conflit")
-sample_cols = [c for c in [delay_col, gap_col, "checkin_type"] if c in df.columns]
-sample = df.loc[conflicts, sample_cols].head(20)
-st.dataframe(sample)
+if pd.notna(wait):
+    st.caption(f"Attente moyenne du conducteur suivant (cas impactés) : **{wait:.0f} min**")
+
+# --- Viz ---
+left, right = st.columns(2)
+
+with left:
+    fig1 = px.histogram(
+        scoped.dropna(subset=["_delay"]),
+        x="_delay",
+        nbins=40,
+        title="Distribution des retards au checkout (min)",
+    )
+    fig1.add_vline(x=0, line_dash="dash", line_color="gray")
+    st.plotly_chart(fig1, use_container_width=True)
+
+with right:
+    grid = np.arange(0, 121, 5)
+    rows = []
+    for t in grid:
+        aff = scoped["_gap"].lt(t).fillna(False)
+        late = (scoped["_delay"] > scoped["_gap"]).fillna(False)
+        avoided = late & scoped["_gap"].lt(t).fillna(False)
+        rows.append(
+            {
+                "threshold": t,
+                "% locations touchées": 100 * aff.sum() / n if n else 0,
+                "% problèmes évités (parmi impacts)": 100 * avoided.sum() / late.sum() if late.sum() else 0,
+            }
+        )
+    curve = pd.DataFrame(rows)
+    fig2 = px.line(
+        curve,
+        x="threshold",
+        y=["% locations touchées", "% problèmes évités (parmi impacts)"],
+        title="Trade-off du threshold",
+        labels={"value": "%", "variable": "Indicateur"},
+    )
+    fig2.add_vline(x=threshold, line_dash="dot", line_color="#D4A843")
+    st.plotly_chart(fig2, use_container_width=True)
+
+st.subheader("Aperçu des cas problématiques (retard > gap)")
+sample_cols = [c for c in [delay_col, gap_col, "checkin_type", "state"] if c in scoped.columns]
+st.dataframe(scoped.loc[late_impact, sample_cols].head(20))
 
 st.markdown(
     f"""
-**Méthode**
-- Conflit si *{gap_col}* < 0 (chevauchement avec la location suivante).
-- Un **threshold** ajoute un tampon avant le check-in suivant; conflit résolu si *{gap_col} + threshold ≥ 0*.
-- Le scope “Connect only” filtre les lignes où `checkin_type == 'connect'` (ou `is_connect==1`).
+**Méthode** (alignée sur l'analyse Jedha)
+- **Touchée par le threshold** : `{gap_col} < threshold` → l'enchaînement ne serait plus autorisé.
+- **Impact sur le suivant** : `{delay_col} > {gap_col}` → le retard dépasse le tampon planifié.
+- **Problème évité** : cas impacté **et** `gap < threshold` (cet enchaînement aurait été bloqué).
+- Scope **Connect only** : `checkin_type == 'connect'`.
 
 **Limites**
-- Approximation simple; pas d’estimation directe du CA dans ce MVP.
-- Les noms de colonnes sont autodétectés pour tolérer de légères variations de schéma.
+- Beaucoup de `gap` manquants (~91 %) : les % sont calculés sur toutes les locations *ended* du scope
+  (comme dans le notebook), donc sous-estimés vs. le sous-ensemble avec gap renseigné.
+- MVP sans estimation de CA perdu.
 """
 )

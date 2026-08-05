@@ -18,7 +18,25 @@ Portfolio de projets de certification **RNCP niveau 6** — parcours Data Scienc
 | 5 | [Conversion Rate](./Projet%205%20-%20Supervised%20ML%20-%20Conversion%20Rate%20Challenge) | Classification (F1) | **Bloc 3** | LogisticRegression, XGBoost |
 | 6 | [Uber](./Projet%206%20-%20Unsupervised%20ML%20-%20Uber) | Clustering spatial | **Bloc 3** | KMeans, DBSCAN |
 | 7 | [AT&T Spam](./Projet%207-Deep%20Learning%20AT%26T) | NLP / Deep Learning | **Bloc 4** — Non structuré | TensorFlow, BERT |
-| 8 | [Getaround](./Projet%208%20-%20Deployment%20-%20Getaround) | MLOps / déploiement | **Blocs 5–6** | FastAPI, Streamlit, Ridge |
+| 8 | [Getaround](./Projet%208%20-%20Deployment%20-%20Getaround) | MLOps / déploiement | **Bloc 5** — Industrialisation | FastAPI, Streamlit, Ridge |
+| 9 | [HPP Prediction](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction) | Projet final clinique | **Bloc 6** — Direction de projet | XGBoost, MLflow, Streamlit, Docker |
+
+Repo source du projet final : [Jedha_Full_Stack_HPP_Prediction](https://github.com/thibautmodrin/Jedha_Full_Stack_HPP_Prediction)
+
+### Démo HPP (Bloc 6) — local & Hugging Face
+
+| Mode | Comment faire |
+|------|----------------|
+| **En ligne** | https://thibautmodrin-hpp-prediction.hf.space → importer `test_dataset_predictor.csv` → **Prédire** |
+| **Local** | Voir [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
+| **Dossier app** | `Projet 9/.../03_Streamlit/hpp_prediction_local/` |
+
+```bash
+cd "Projet 9 - Final Project - HPP Prediction/03_Streamlit/hpp_prediction_local"
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
 
 ---
 
@@ -39,14 +57,24 @@ Portfolio de projets de certification **RNCP niveau 6** — parcours Data Scienc
 - ML **supervisé & non supervisé** avec métriques claires (R², F1, clustering)  
 - **Deep Learning NLP** (spam detector)  
 - **Déploiement** API + dashboard (Getaround)  
+- **Projet final HPP** : enjeu métier réel, MLOps (MLflow/Docker), POC Streamlit, RGPD  
 - Culture **secrets / .env**, reproductibilité (`requirements.txt`)
 
 ---
 
 ## Oral de certification
 
-Diaporama de présentation :  
-`Presentation_Orale_Certification_Jedha.pptx` (à la racine du dépôt, après génération).
+| Deck | Fichier |
+|------|---------|
+| Vue d’ensemble | `Presentation_Orale_Certification_Jedha.pptx` |
+| Bloc 1 — Kayak | `Presentation_Bloc1_Kayak.pptx` |
+| Bloc 2 — Steam | `Presentation_Bloc2_Steam.pptx` |
+| Bloc 3 — Conversion + Uber | `Presentation_Bloc3_Conversion.pptx` |
+| Bloc 4 — AT&T Spam | `Presentation_Bloc4_ATT_Spam.pptx` |
+| Bloc 5 — Getaround | `Presentation_Bloc5_Getaround.pptx` |
+| Bloc 6 — HPP (projet final) | `Presentation_Bloc6_HPP.pptx` |
+
+Sources générateurs (Blocs 1–5) : `oral/presentation_bloc*.js`
 
 ---
 

@@ -36,24 +36,16 @@ Fichiers utiles : `app.py`, `best_model_logreg_f1_Sans_resampling.joblib`, `test
 2. Importer `test_dataset_predictor.csv`  
 3. Cliquer **Prédire**
 
-### En local (Docker uniquement)
+### En local (Docker Compose uniquement)
 
-Prérequis : [Docker](https://docs.docker.com/get-docker/) installé.
+Prérequis : [Docker](https://docs.docker.com/get-docker/) avec Docker Compose.
 
 ```bash
 cd 03_Streamlit/hpp_prediction_local
-docker build -t hpp-prediction .
-docker run --rm -p 8501:80 hpp-prediction
+docker compose up --build
 ```
 
 → http://localhost:8501
-
-Alternative (image déjà publiée) :
-
-```bash
-cd 03_Streamlit/hpp_prediction_local
-docker run --rm -p 8501:80 thibautmodrin/hpp-predict
-```
 
 ## Structure du projet
 

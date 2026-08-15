@@ -219,3 +219,9 @@ Projet 9 - Final Project - HPP Prediction/00_Data/data/
 
 # Uber trip CSVs (téléchargées depuis le lien Jedha)
 Projet 6 - Unsupervised ML - Uber/source/
+
+# AT&T spam detector — embeddings & modèles entraînés (trop volumineux)
+Projet 7-Deep Learning AT&T/glove*.txt
+Projet 7-Deep Learning AT&T/glove*.zip
+Projet 7-Deep Learning AT&T/cc.fr.300.vec*
+Projet 7-Deep Learning AT&T/benchmark_results/

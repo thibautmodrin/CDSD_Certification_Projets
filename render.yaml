@@ -1,0 +1,31 @@
+# Blueprint Render (monorepo CDSD)
+# New → Blueprint → ce dépôt GitHub
+# Services Getaround uniquement.
+
+services:
+  - type: web
+    name: getaround-api
+    runtime: python
+    plan: free
+    rootDir: Projet 8 - Deployment - Getaround
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+
+  - type: web
+    name: getaround-dashboard
+    runtime: python
+    plan: free
+    rootDir: Projet 8 - Deployment - Getaround
+    buildCommand: pip install -r requirements-dashboard.txt
+    startCommand: >-
+      streamlit run dashboard/streamlit_app.py
+      --server.port $PORT
+      --server.address 0.0.0.0
+      --server.headless true
+      --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"

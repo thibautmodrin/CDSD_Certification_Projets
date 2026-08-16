@@ -171,7 +171,7 @@ async function main() {
     x: 0.4, y: 4.15, w: 9.2, h: 0.85, fill: { color: C.lt }, rectRadius: 0.06,
   });
   s.addText(
-    "Deux livrables distincts : API pricing (inférence) + dashboard retards (décision métier)\nCible déploiement : Hugging Face Spaces / PaaS (API + Streamlit séparés)",
+    "Deux livrables distincts : API pricing (inférence) + dashboard retards (décision métier)\nCible déploiement : Render (2 Web Services Free) — API + Streamlit",
     {
       x: 0.55, y: 4.3, w: 8.9, h: 0.6, fontFace: B, fontSize: 13, color: C.slate, margin: 0,
     }
@@ -312,9 +312,9 @@ async function main() {
   });
 
   const demos = [
-    { n: "01", t: "uvicorn app.main:app", d: "Swagger → POST /predict" },
-    { n: "02", t: "streamlit run …", d: "Slider threshold + KPIs" },
-    { n: "03", t: "Option : URL HF Spaces", d: "Si déjà déployé en ligne" },
+    { n: "01", t: "Render API", d: "getaround-api.onrender.com → /docs" },
+    { n: "02", t: "Render Dash", d: "getaround-dashboard.onrender.com" },
+    { n: "03", t: "Fallback local", d: "uvicorn + streamlit si offline" },
   ];
   demos.forEach((d, i) => {
     const x = 0.4 + i * 3.15;
@@ -376,7 +376,7 @@ async function main() {
   });
   const lims = [
     { now: "Docker / MLflow absents ici", next: "→ citer HPP (MLflow Space)" },
-    { now: "Déploiement cloud à confirmer", next: "→ HF Spaces API + dash" },
+    { now: "Render Free (2 Web Services)", next: "→ API + dashboard publics" },
     { now: "Artefacts non commités", next: "→ train avant démo" },
     { now: "Pas de CI/CD", next: "→ GitHub Actions" },
     { now: "Monitoring / drift absent", next: "→ logs + alertes" },

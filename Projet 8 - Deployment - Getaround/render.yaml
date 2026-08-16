@@ -1,0 +1,39 @@
+# Blueprint Render — 2 Web Services (API FastAPI + Dashboard Streamlit)
+# Doc: https://render.com/docs/blueprint-spec
+#
+# Usage (monorepo) :
+#   1. Pousser ce dépôt sur GitHub
+#   2. Render Dashboard → New → Blueprint → sélectionner le repo
+#   3. Ou créer 2 Web Services manuellement (voir readme.md) avec
+#      Root Directory = Projet 8 - Deployment - Getaround
+#
+# Si le Blueprint est appliqué depuis la racine du monorepo, décommente
+# les lignes rootDir ci-dessous (chemin relatif à la racine Git).
+
+services:
+  - type: web
+    name: getaround-api
+    runtime: python
+    plan: free
+    # rootDir: Projet 8 - Deployment - Getaround
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+
+  - type: web
+    name: getaround-dashboard
+    runtime: python
+    plan: free
+    # rootDir: Projet 8 - Deployment - Getaround
+    buildCommand: pip install -r requirements-dashboard.txt
+    startCommand: >-
+      streamlit run dashboard/streamlit_app.py
+      --server.port $PORT
+      --server.address 0.0.0.0
+      --server.headless true
+      --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"

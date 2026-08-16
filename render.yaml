@@ -1,6 +1,6 @@
 # Blueprint Render (monorepo CDSD)
 # New → Blueprint → ce dépôt GitHub
-# Services Getaround uniquement.
+# Getaround (Bloc 5) + HPP API (Bloc 6)
 
 services:
   - type: web
@@ -26,6 +26,17 @@ services:
       --server.address 0.0.0.0
       --server.headless true
       --browser.gatherUsageStats false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+
+  - type: web
+    name: hpp-api
+    runtime: python
+    plan: free
+    rootDir: Projet 9 - Final Project - HPP Prediction
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: "3.11.9"

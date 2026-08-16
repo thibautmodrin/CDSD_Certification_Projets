@@ -1,6 +1,7 @@
-streamlit==1.41.1
+fastapi
+uvicorn
+pydantic
 pandas==2.2.2
+numpy
 joblib==1.4.2
 scikit-learn==1.6.1
-numpy
-requests

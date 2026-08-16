@@ -24,7 +24,6 @@ Projet 8 - Deployment - Getaround/
 ├── others/                      # notebooks EDA / ML
 ├── tests/
 ├── 01-Getaround_analysis.ipynb  # brief mission Jedha
-├── render.yaml
 ├── requirements.txt             # local (tout)
 ├── requirements-api.txt         # Render API
 ├── requirements-dashboard.txt   # Render dashboard
@@ -32,7 +31,7 @@ Projet 8 - Deployment - Getaround/
 └── readme.md
 ```
 
-À la racine du monorepo : `render.yaml` avec `rootDir` pour Blueprint GitHub.
+Blueprint Render (monorepo) : `render.yaml` à la **racine** du dépôt GitHub (avec `rootDir` → ce dossier).
 
 ## Données Jedha
 

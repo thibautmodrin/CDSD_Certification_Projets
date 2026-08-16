@@ -1,10 +1,6 @@
-# Getaround — Livrable minimal (API + Dashboard)
+# Notebooks d’exploration Getaround
 
-Voir le **README racine** : [`../readme.md`](../readme.md)
+Voir le README principal : [`../readme.md`](../readme.md)
 
-Hébergement : **Render** (pas Hugging Face Docker — nécessite PRO).
-
-- API : `https://getaround-api.onrender.com` (URL exacte après deploy)  
-- Dashboard : `https://getaround-dashboard.onrender.com`
-
-`others/app.py` est obsolète — utiliser `app/main.py`.
+- API : https://getaround-api-sit1.onrender.com/docs  
+- Dashboard : https://getaround-dashboard-yims.onrender.com  

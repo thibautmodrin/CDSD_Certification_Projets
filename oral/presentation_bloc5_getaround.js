@@ -312,8 +312,8 @@ async function main() {
   });
 
   const demos = [
-    { n: "01", t: "Render API", d: "getaround-api.onrender.com → /docs" },
-    { n: "02", t: "Render Dash", d: "getaround-dashboard.onrender.com" },
+    { n: "01", t: "Render API", d: "getaround-api-sit1 → /docs" },
+    { n: "02", t: "Render Dash", d: "getaround-dashboard-yims" },
     { n: "03", t: "Fallback local", d: "uvicorn + streamlit si offline" },
   ];
   demos.forEach((d, i) => {

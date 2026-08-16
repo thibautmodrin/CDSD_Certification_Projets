@@ -41,7 +41,7 @@ Techniques de rééquilibrage testées : SMOTE, SMOTEENN, RandomUnderSampler, su
 |-----------|------|
 | App Streamlit | https://thibautmodrin-hpp-prediction.hf.space |
 | MLflow | https://thibautmodrin-mlflow.hf.space/ |
-| Oral | `04_Presentation/Presentation_Bloc6_HPP.pptx` |
+| Oral | [`oral/06_hpp/`](../oral/06_hpp/) |
 
 ## Lancer l’app Streamlit
 

@@ -63,17 +63,19 @@ docker compose up --build
 
 ## Oral de certification
 
-| Deck | Fichier |
-|------|---------|
-| Vue d’ensemble | `Presentation_Orale_Certification_Jedha.pptx` |
-| Bloc 1 — Kayak | `Presentation_Bloc1_Kayak.pptx` |
-| Bloc 2 — Steam | `Presentation_Bloc2_Steam.pptx` |
-| Bloc 3 — Conversion + Uber | `Presentation_Bloc3_Conversion.pptx` |
-| Bloc 4 — AT&T Spam | `Presentation_Bloc4_ATT_Spam.pptx` |
-| Bloc 5 — Getaround | `Presentation_Bloc5_Getaround.pptx` |
-| Bloc 6 — HPP (projet final) | `Presentation_Bloc6_HPP.pptx` |
+Tous les decks (sources JS + PPTX) sont dans **`oral/`** :
 
-Sources générateurs (Blocs 1–5) : `oral/presentation_bloc*.js`
+| Deck | Dossier |
+|------|---------|
+| Vue d’ensemble | `oral/overview/` |
+| Bloc 1 — Kayak | `oral/01_kayak/` |
+| Bloc 2 — Steam | `oral/02_steam/` |
+| Bloc 3 — Conversion + Uber | `oral/03_conversion_uber/` |
+| Bloc 4 — AT&T Spam | `oral/04_att_spam/` |
+| Bloc 5 — Getaround | `oral/05_getaround/` |
+| Bloc 6 — HPP | `oral/06_hpp/` |
+
+Voir `oral/README.md` pour régénérer les PPTX.
 
 ---
 

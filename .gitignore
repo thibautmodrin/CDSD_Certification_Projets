@@ -225,3 +225,8 @@ Projet 7-Deep Learning AT&T/glove*.txt
 Projet 7-Deep Learning AT&T/glove*.zip
 Projet 7-Deep Learning AT&T/cc.fr.300.vec*
 Projet 7-Deep Learning AT&T/benchmark_results/
+
+# Oral Node (local)
+oral/.tools/
+oral/node_modules/
+

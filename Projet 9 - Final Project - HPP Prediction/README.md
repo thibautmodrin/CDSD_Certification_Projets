@@ -20,7 +20,7 @@ Notebooks ──► MLflow (tracking HF)     ← expériences / métriques (pas 
 
 | Couche | Rôle |
 |--------|------|
-| `01_Notebooks/` | Parcours pro : EDA → preprocessing → comparaison modèles |
+| `01_Notebooks/` | `00` prepare → EDA → preprocessing → modèles (+ MLflow) |
 | `app/` | **API FastAPI** (serving via `model.joblib`) |
 | `02_MLflow/` | Tracking expériences uniquement (pas branché à l’API) |
 | `03_Streamlit/` | POC clinique → API Render par défaut (`HPP_API_URL`) |
@@ -34,6 +34,25 @@ Notebooks ──► MLflow (tracking HF)     ← expériences / métriques (pas 
 | XGBoost | 66 % | ~9 % | Optimisation avancée | Résultats similaires |
 
 Techniques de rééquilibrage testées : SMOTE, SMOTEENN, RandomUnderSampler, surpondération.
+
+> Après une re-run complète (`00`→`03` sur la base Drive), mettre à jour ce tableau avec les métriques du notebook `03` / MLflow.
+
+## Rejouer le pipeline (base complète)
+
+1. Télécharger depuis le [Drive public](https://drive.google.com/drive/folders/1DToPXrJ8znq9WH0SLrvFEvX7N-LTY-Eg?usp=sharing) :
+   - `Bourgogne20132023.xls` → `00_Data/raw/`
+2. Lancer dans l’ordre :
+   - `01_Notebooks/00_Prepare_Data.ipynb`
+   - `01_EDA.ipynb` → `02_Preprocessing.ipynb` → `03_Model_Comparison.ipynb`
+3. Vérifier les runs sur https://thibautmodrin-mlflow.hf.space/ (expérience `HPP_Model_Comparison_Certification`)
+4. (Option) exporter le modèle prod :
+
+```powershell
+$env:HPP_EXPORT_ARTIFACTS = "1"
+# puis ré-exécuter la cellule export du notebook 03
+```
+
+Sans `raw/` / `processed/`, les notebooks tournent sur l’extrait portfolio (mode démo). Détails : [`00_Data/DATA_LOCATION.md`](./00_Data/DATA_LOCATION.md).
 
 ## Démos
 
@@ -114,15 +133,15 @@ streamlit run 03_Streamlit/app.py
 
 ## Notebooks
 
-Parcours certification (3 notebooks) :
-
 | Fichier | Rôle |
 |---------|------|
-| `01_EDA.ipynb` | EDA synthèse (périmètre, NA, décisions features) |
-| `02_Preprocessing.ipynb` | dropna vs imputation + `ColumnTransformer` |
-| `03_Model_Comparison.ipynb` | LogReg / RF / XGB + résultats métier |
+| `00_Prepare_Data.ipynb` | Drive `.xls` → `processed/hpp_prepartum.csv` |
+| `01_EDA.ipynb` | EDA synthèse |
+| `02_Preprocessing.ipynb` | dropna + `ColumnTransformer` |
+| `03_Model_Comparison.ipynb` | LogReg / RF / XGB + **MLflow** |
+| `hpp_data.py` | Chemins / features / `load_hpp()` partagés |
 
-Détail historique (GridSearch, exploration) : `01_Notebooks/_archive/`.
+Détail historique : `01_Notebooks/_archive/`.
 
 ## Structure
 

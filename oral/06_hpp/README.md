@@ -16,5 +16,5 @@
 | API FastAPI | https://hpp-api.onrender.com/docs |
 
 Industrialisation :
-`notebooks` → `joblib` → **API `/predict` (Render)** → Streamlit (UI) ;
-**MLflow** = tracking d’expériences (séparé du serving).
+Drive → `00_Prepare` → notebooks → **MLflow** (tracking) ;
+`joblib` → **API `/predict`** → Streamlit.

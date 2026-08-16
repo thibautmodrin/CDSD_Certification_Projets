@@ -13,6 +13,6 @@
 |---------|-----|
 | Streamlit | https://thibautmodrin-hpp-prediction.hf.space |
 | MLflow | https://thibautmodrin-mlflow.hf.space/ |
-| API FastAPI | `https://hpp-api-….onrender.com/docs` (après création Render) |
+| API FastAPI | https://hpp-api.onrender.com/docs |
 
 Industrialisation : notebooks → joblib → **API `/predict`** → Streamlit + tracking MLflow.

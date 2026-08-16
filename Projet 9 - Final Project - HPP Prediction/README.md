@@ -38,7 +38,7 @@ Techniques de rééquilibrage testées : SMOTE, SMOTEENN, RandomUnderSampler, su
 |-----------|------|
 | App Streamlit | https://thibautmodrin-hpp-prediction.hf.space |
 | MLflow | https://thibautmodrin-mlflow.hf.space/ |
-| API FastAPI | `https://hpp-api-xxxx.onrender.com` (après deploy Render) → `/docs` |
+| API FastAPI | https://hpp-api.onrender.com → [/docs](https://hpp-api.onrender.com/docs) |
 | Oral | [`oral/06_hpp/`](../oral/06_hpp/) |
 
 ## API locale
@@ -97,7 +97,7 @@ docker compose up --build
 
 ```bash
 # Windows
-$env:HPP_API_URL = "https://hpp-api-xxxx.onrender.com"
+$env:HPP_API_URL = "https://hpp-api.onrender.com"
 streamlit run 03_Streamlit/app.py
 ```
 

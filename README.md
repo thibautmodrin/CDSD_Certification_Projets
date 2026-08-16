@@ -23,11 +23,13 @@ Portfolio de projets de certification **RNCP niveau 6** — parcours Data Scienc
 
 Repo source du projet final : [Jedha_Full_Stack_HPP_Prediction](https://github.com/thibautmodrin/Jedha_Full_Stack_HPP_Prediction)
 
-### Démo HPP (Bloc 6) — Hugging Face & Docker Compose
+### Démo HPP (Bloc 6) — Hugging Face, Render & Docker Compose
 
 | Mode | Comment faire |
 |------|----------------|
-| **En ligne** | https://thibautmodrin-hpp-prediction.hf.space → **Charger le dataset de démo** → **Prédire** |
+| **Streamlit** | https://thibautmodrin-hpp-prediction.hf.space → **Charger le dataset de démo** → **Prédire** |
+| **API FastAPI** | https://hpp-api.onrender.com/docs |
+| **MLflow** | https://thibautmodrin-mlflow.hf.space/ |
 | **Local (Compose)** | Prérequis : [Docker](https://docs.docker.com/get-docker/). Détails : [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
 
 ```bash

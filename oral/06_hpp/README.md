@@ -15,4 +15,6 @@
 | MLflow | https://thibautmodrin-mlflow.hf.space/ |
 | API FastAPI | https://hpp-api.onrender.com/docs |
 
-Industrialisation : notebooks → joblib → **API `/predict`** → Streamlit + tracking MLflow.
+Industrialisation :
+`notebooks` → `joblib` → **API `/predict` (Render)** → Streamlit (UI) ;
+**MLflow** = tracking d’expériences (séparé du serving).

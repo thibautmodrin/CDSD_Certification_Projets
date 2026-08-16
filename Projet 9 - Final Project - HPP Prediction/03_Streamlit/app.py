@@ -10,7 +10,19 @@ import streamlit as st
 
 DEMO_CSV = Path(__file__).resolve().parent / "test_dataset_predictor.csv"
 LOCAL_MODEL = Path(__file__).resolve().parent / "best_model_logreg_f1_Sans_resampling.joblib"
-API_URL = os.environ.get("HPP_API_URL", "").rstrip("/")
+DEFAULT_API_URL = "https://hpp-api.onrender.com"
+
+
+def _resolve_api_url() -> str:
+    """API Render par défaut ; joblib local si HPP_USE_LOCAL=1 ou HPP_API_URL=\"\"."""
+    if os.environ.get("HPP_USE_LOCAL", "").strip().lower() in ("1", "true", "yes"):
+        return ""
+    if "HPP_API_URL" in os.environ:
+        return os.environ["HPP_API_URL"].strip().rstrip("/")
+    return DEFAULT_API_URL
+
+
+API_URL = _resolve_api_url()
 
 
 @st.cache_resource

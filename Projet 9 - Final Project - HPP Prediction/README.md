@@ -11,16 +11,19 @@ Priorité métier : un bon **rappel (recall)** plutôt qu’une précision parfa
 ## Architecture (industrialisée)
 
 ```
-Notebooks → joblib → MLflow (tracking)
-                  ↘ FastAPI /predict  → Streamlit (UI)
+Notebooks ──► MLflow (tracking HF)     ← expériences / métriques (pas de serving)
+         └─► joblib (artefact versionné)
+                └─► FastAPI /predict (Render)
+                       └─► Streamlit (HF)  ← appelle l'API par défaut
+                              └─ fallback joblib si API down / HPP_USE_LOCAL=1
 ```
 
 | Couche | Rôle |
 |--------|------|
-| `01_Notebooks/` | EDA pro + exploration + modèles |
-| `app/` | **API FastAPI** (pattern Jedha Deployment) |
-| `02_MLflow/` | Tracking expériences (HF Space) |
-| `03_Streamlit/` | POC clinique (HF Space ; option API via `HPP_API_URL`) |
+| `01_Notebooks/` | Parcours pro : EDA → preprocessing → comparaison modèles |
+| `app/` | **API FastAPI** (serving via `model.joblib`) |
+| `02_MLflow/` | Tracking expériences uniquement (pas branché à l’API) |
+| `03_Streamlit/` | POC clinique → API Render par défaut (`HPP_API_URL`) |
 
 ## Résultats principaux
 
@@ -93,23 +96,33 @@ cd 03_Streamlit
 docker compose up --build
 ```
 
-### Brancher l’API (optionnel)
+### Inférence Streamlit
+
+Par défaut, Streamlit appelle **https://hpp-api.onrender.com** (même modèle que le joblib local).
+
+| Variable | Effet |
+|----------|--------|
+| *(aucune)* | API Render |
+| `HPP_API_URL=https://…` | API personnalisée |
+| `HPP_API_URL=` ou `HPP_USE_LOCAL=1` | joblib local uniquement |
 
 ```bash
-# Windows
-$env:HPP_API_URL = "https://hpp-api.onrender.com"
+# Forcer le local (ex. Docker Compose)
+$env:HPP_USE_LOCAL = "1"
 streamlit run 03_Streamlit/app.py
 ```
 
-Sans `HPP_API_URL`, l’app utilise le joblib local (comportement HF actuel).
-
 ## Notebooks
+
+Parcours certification (3 notebooks) :
 
 | Fichier | Rôle |
 |---------|------|
-| `01_EDA.ipynb` | EDA **synthèse** (pro) |
-| `01_EDA_exploration.ipynb` | Archive exploration détaillée |
-| `02` → `05` | Imputation + LogReg / RF / XGB |
+| `01_EDA.ipynb` | EDA synthèse (périmètre, NA, décisions features) |
+| `02_Preprocessing.ipynb` | dropna vs imputation + `ColumnTransformer` |
+| `03_Model_Comparison.ipynb` | LogReg / RF / XGB + résultats métier |
+
+Détail historique (GridSearch, exploration) : `01_Notebooks/_archive/`.
 
 ## Structure
 

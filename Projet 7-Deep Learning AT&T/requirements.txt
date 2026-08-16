@@ -1,0 +1,16 @@
+# Projet 7 — AT&T Spam Detector (Deep Learning)
+# Compatible Python 3.11–3.13 (TensorFlow 2.20+)
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.13.0
+plotly>=5.18.0
+tensorflow>=2.20.0
+tensorflow-hub>=0.16.0
+nbformat>=5.9.0
+ipykernel>=6.25.0
+
+# BERT (TF Hub preprocessor) — installer si disponible pour ta combo Python/TF :
+# pip install tensorflow-text
+# Si l'install échoue sur Python 3.13, le benchmark CNN/LSTM/Dense + GloVe reste valide pour le livrable.

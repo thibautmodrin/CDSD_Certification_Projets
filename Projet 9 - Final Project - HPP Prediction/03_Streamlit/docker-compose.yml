@@ -1,0 +1,9 @@
+services:
+  hpp-prediction:
+    build: .
+    ports:
+      - "8501:80"
+    environment:
+      # Inférence locale (joblib) ; pour l'API Render : HPP_USE_LOCAL=0
+      HPP_USE_LOCAL: "1"
+    restart: unless-stopped

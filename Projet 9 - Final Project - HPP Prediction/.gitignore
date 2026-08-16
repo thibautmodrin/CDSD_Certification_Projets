@@ -1,0 +1,21 @@
+# Ignorer l'environnement virtuel
+.venv/
+
+# Ignorer les fichiers Python compilés
+*.pyc
+__pycache__/
+
+# Ignorer les fichiers Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignorer les fichiers de logs
+*.log
+
+# Données brutes / traitées (RGPD & volume) — voir 00_Data/DATA_LOCATION.md
+00_Data/raw/**
+!00_Data/raw/.gitkeep
+00_Data/processed/**
+!00_Data/processed/.gitkeep
+00_Data/Bourgogne20132023.xls
+00_Data/Bourgogne20132023.csv
+00_Data/Dictionnaire variables.xlsx

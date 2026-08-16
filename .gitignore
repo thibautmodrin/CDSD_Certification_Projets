@@ -211,3 +211,22 @@ __marimo__/
 *.env
 /Projet 1 - Data Collection - Kayak/*.csv
 /Projet 1 - Data Collection - Kayak/*.json
+
+# HPP raw clinical data (kept in source repo only)
+Projet 9 - Final Project - HPP Prediction/00_Data/Bourgogne*
+Projet 9 - Final Project - HPP Prediction/00_Data/Basemere*
+Projet 9 - Final Project - HPP Prediction/00_Data/data/
+
+# Uber trip CSVs (téléchargées depuis le lien Jedha)
+Projet 6 - Unsupervised ML - Uber/source/
+
+# AT&T spam detector — embeddings & modèles entraînés (trop volumineux)
+Projet 7-Deep Learning AT&T/glove*.txt
+Projet 7-Deep Learning AT&T/glove*.zip
+Projet 7-Deep Learning AT&T/cc.fr.300.vec*
+Projet 7-Deep Learning AT&T/benchmark_results/
+
+# Oral Node (local)
+oral/.tools/
+oral/node_modules/
+

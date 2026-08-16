@@ -7,4 +7,5 @@ Decks oraux (pas de générateur JS) :
 | `Presentation_Bloc6_HPP.pptx` | Deck standard style certification |
 | `Jedha_CDSD_Hpp_Prediction_Bloc6.pptx` | Version détaillée Jedha |
 
-Les copies dans `Projet 9/.../04_Presentation/` pointent vers ce dossier.
+Les decks oraux (style certif + version détaillée) sont dans ce dossier.
+

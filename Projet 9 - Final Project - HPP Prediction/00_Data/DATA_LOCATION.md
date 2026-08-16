@@ -4,7 +4,6 @@ Les fichiers volumineux ne sont **pas** dupliqués dans le portfolio de certific
 
 Ils restent dans le dépôt source :
 
-- Local : `/home/burgovida21/Bureau/Jedha_Full_Stack_HPP_Prediction/00_Data/`
 - GitHub : https://github.com/thibautmodrin/Jedha_Full_Stack_HPP_Prediction
 
 Fichiers exclus ici :

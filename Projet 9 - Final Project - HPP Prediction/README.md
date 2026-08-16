@@ -45,7 +45,7 @@ Techniques de rééquilibrage testées : SMOTE, SMOTEENN, RandomUnderSampler, su
 
 ## Lancer l’app Streamlit
 
-Dossier : `03_Streamlit/hpp_prediction_local/`  
+Dossier : `03_Streamlit/`  
 Fichiers utiles : `app.py`, `best_model_logreg_f1_Sans_resampling.joblib`, `test_dataset_predictor.csv`
 
 ### En ligne (Hugging Face)
@@ -59,7 +59,7 @@ Fichiers utiles : `app.py`, `best_model_logreg_f1_Sans_resampling.joblib`, `test
 Prérequis : [Docker](https://docs.docker.com/get-docker/) avec Docker Compose.
 
 ```bash
-cd 03_Streamlit/hpp_prediction_local
+cd 03_Streamlit
 docker compose up --build
 ```
 
@@ -69,10 +69,10 @@ docker compose up --build
 
 ```
 00_Data/          # extrait / dico (données brutes hors repo si volumineuses)
-01_Notebooks/     # EDA + modélisation
+01_Notebooks/     # EDA + modélisation (00 → 05)
 02_MLflow/        # Docker MLflow
-03_Streamlit/     # POC Streamlit
-04_Presentation/  # deck oral Bloc 6
+03_Streamlit/     # POC Streamlit (app + Docker)
+04_Presentation/  # pointeur → oral/06_hpp/
 ```
 
 ## Confidentialité

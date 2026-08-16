@@ -31,7 +31,7 @@ Repo source du projet final : [Jedha_Full_Stack_HPP_Prediction](https://github.c
 | **Local (Compose)** | Prérequis : [Docker](https://docs.docker.com/get-docker/). Détails : [Projet 9 / README](./Projet%209%20-%20Final%20Project%20-%20HPP%20Prediction/README.md) |
 
 ```bash
-cd "Projet 9 - Final Project - HPP Prediction/03_Streamlit/hpp_prediction_local"
+cd "Projet 9 - Final Project - HPP Prediction/03_Streamlit"
 docker compose up --build
 ```
 
